@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="alert alert-danger" *ngIf="messageError">
+    <strong>Error!</strong> {{ messageError }}
+  </div>
+  <form class="form-group row" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="col-lg-6">
+      <div class="form-group" *ngIf="!findUser"> <!-- Username field -->
+        <label class="control-label " for="username">Username</label>
+        <input class="form-control col-xs-2" id="username" name="username" type="text"
+          [value]="user.username"
+          (keyup)="user.username=$event.target.value"
+          formControlName="username"/>
+      </div>
+      <div class="form-group"> <!-- Name field -->
+        <label class="control-label " for="name">Name</label>
+        <input class="form-control col-xs-2" id="name" name="name" type="text"
+          [value]="user.name"
+          (keyup)="user.name=$event.target.value"
+          formControlName="name"/>
+      </div>
+      <!--<div formGroupName="passwords">
+        <div class="form-group">
+          <label class="control-label " for="password">Password</label>
+          <input class="form-control" id="password" name="password" type="text"
+            [value]="user.password"
+            (keyup)="user.password=$event.target.value"
+            formControlName="password"/>
+        </div>
+        <div class="form-group">
+          <label class="control-label " for="confirmPassword">Confirm Password</label>
+          <input class="form-control" id="confirmPassword" name="confirPassword" type="text"
+            formControlName="confirmpassword"/>
+        </div>
+      </div>-->
+      <div class="form-group"> <!-- Type Button -->
+        <label for="type_id" class="control-label">User Type</label>
+        <select class="form-control col-xs-4" id="state_id"
+          [(ngModel)]="user.type"[ngModelOptions]="{standalone:true}">
+          <option value="0" [selected]="user.type===0">USER</option>
+          <option value="1" [selected]="user.type===1">ADMIN</option>
+        </select>
+      </div>
+
+      <div class="form-group"> <!-- Image field -->
+        <label class="control-label " for="image">Image</label><br/>
+        <img width="200" heigh="200" id="image" [src]="user.image"/>
+      </div>
+
+      <div class="form-group"> <!-- Image field -->
+        <label class="control-label " for="image">Image</label><br/>
+        <label class="btn btn-default">
+          Browse <input type="file" id="image" name="image"
+          (change)="changeFile($event)" hidden>
+        </label>
+      </div>
+      <div class="form-group" *ngIf="!findUser">
+        <button class="btn btn-primary " name="save"
+          [disabled]="!form.valid"
+          (click)="isSave='s'">
+          Save
+        </button>
+      </div>
+      <div class="form-group" *ngIf="findUser">
+        <button class="btn btn-primary " name="update"
+          [disabled]="!form.valid"
+          (click)="isSave='u'">
+          Update
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
