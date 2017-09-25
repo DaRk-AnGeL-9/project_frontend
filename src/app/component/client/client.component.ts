@@ -106,7 +106,7 @@ export class ClientComponent implements OnInit {
 
                     this.auth.setProperty('isDeleteC', true);
                     this.auth.setProperty('find_client', null);
-                    this.router.navigateByUrl('/client');
+                    this.getAllClient();
                 },
                 error => {
                     alert('Not exist user.');
