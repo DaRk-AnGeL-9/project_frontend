@@ -107,7 +107,7 @@ export class UserComponent implements OnInit {
 
                     this.auth.setProperty('isDeleteU', true);
                     this.auth.setProperty('find_user', null);
-                    this.router.navigate(['/']);
+                    this.getAllUser();
                 },
                 error => {
                     alert('Not exist user.');
