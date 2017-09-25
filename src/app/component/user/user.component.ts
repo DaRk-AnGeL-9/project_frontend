@@ -105,9 +105,11 @@ export class UserComponent implements OnInit {
                         this.auth.logout();
                     }
 
-                    this.auth.setProperty('isDeleteU', true);
                     this.auth.setProperty('find_user', null);
                     this.getAllUser();
+                    this.isDelete = true;
+                    this.isUpdate = false;
+                    this.isSave = false;
                 },
                 error => {
                     alert('Not exist user.');
@@ -144,10 +146,6 @@ export class UserComponent implements OnInit {
 
             this.isSave = true;
             this.auth.setProperty('isSaveU', null);
-        } else if(this.auth.getProperty('isDeleteU')) {
-
-            this.isDelete = true;
-            this.auth.setProperty('isDeleteU', null);
         }
         
         this.getAllUser();
