@@ -33,6 +33,11 @@ export class LoginComponent implements OnInit {
         this.password = '';
     }
 
+    public reset() {
+        this.form.reset();
+        this.messageError = "";
+    }
+
     private initComponent() {
         let config = new ServiceBean('http://localhost', '', 8080);
         this.service.setConfig(config);
