@@ -104,9 +104,11 @@ export class ClientComponent implements OnInit {
                         this.auth.logout();
                     }
 
-                    this.auth.setProperty('isDeleteC', true);
                     this.auth.setProperty('find_client', null);
                     this.getAllClient();
+                    this.isDelete = true;
+                    this.isUpdate = false;
+                    this.isSave = false;
                 },
                 error => {
                     alert('Not exist user.');
@@ -143,10 +145,6 @@ export class ClientComponent implements OnInit {
 
             this.isSave = true;
             this.auth.setProperty('isSaveC', null);
-        } else if(this.auth.getProperty('isDeleteC')) {
-
-            this.isDelete = true;
-            this.auth.setProperty('isDeleteC', null);
         }
 
         this.getAllClient();
